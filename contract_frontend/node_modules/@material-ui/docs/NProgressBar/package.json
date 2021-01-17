@@ -1,0 +1,5 @@
+{
+  "sideEffects": false,
+  "module": "../esm/NProgressBar/index.js",
+  "typings": "./index.d.ts"
+}
