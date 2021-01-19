@@ -1,10 +1,14 @@
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
-from .models import ContractBasic, Insurance
-from .serializers import ContractBasicSerializer, InsuranceSerializer
+from .models import ContractBasic, Insurance,BusinessUnit,Department,Regions,Divisions,Sites,Tags
+from .serializers import ContractBasicSerializer, InsuranceSerializer,BusinessUnitSerializer,DepartmentSerializer,RegionsSerializer,DivisionsSerializer,SitesSerializer,TagsSerializer,ContractBasicListSerializer
 from rest_framework.generics import get_object_or_404
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets
+
+
+ 
 
 #contract basic view
 class ContractBasicViewSet(viewsets.ViewSet):
@@ -18,6 +22,8 @@ class ContractBasicViewSet(viewsets.ViewSet):
         response_dict = {"error": False,
                          "message": "List of all Contracts", "data": serializer.data}
         return Response(response_dict)
+
+     
 
     def create(self, request):
         try:
@@ -124,3 +130,33 @@ class InsuranceViewSet(viewsets.ViewSet):
             dict_response = {'error': True,
                              'message': "Error During Deleting Insurance"}
         return Response(dict_response)
+
+
+
+class BusinessUnitViewSet(viewsets.ModelViewSet):
+    queryset=BusinessUnit.objects.all()
+    serializer_class=BusinessUnitSerializer
+
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset=Department.objects.all()
+    serializer_class=DepartmentSerializer
+
+class RegionsViewSet(viewsets.ModelViewSet):
+    queryset=Regions.objects.all()
+    serializer_class=RegionsSerializer
+
+class DivisionsUnitViewSet(viewsets.ModelViewSet):
+    queryset=Divisions.objects.all()
+    serializer_class=DivisionsSerializer
+
+class SitesViewSet(viewsets.ModelViewSet):
+    queryset=Sites.objects.all()
+    serializer_class=SitesSerializer
+
+class TagsViewSet(viewsets.ModelViewSet):
+    queryset=Tags.objects.all()
+    serializer_class=TagsSerializer
+
+class ContractListView(generics.ListAPIView):
+    queryset=ContractBasic.objects.all()
+    serializer_class=ContractBasicListSerializer

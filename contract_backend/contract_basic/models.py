@@ -6,38 +6,40 @@ from user.models import User
 
 
 class BusinessUnit(models.Model):
-    depname=models.CharField(max_length=255)
+    bussname=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.bussname
 
 class Tags(models.Model):
     tagname=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.tagname
 
 class Department(models.Model):
     depname=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.depname
+
 class Regions(models.Model):
     regname=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.regname
+
 class Divisions(models.Model):
     divname=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.divname
 
 class Sites(models.Model):
     sitename=models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.sitename
 
 
 

@@ -109,6 +109,9 @@ const Pricing = async(() =>
     import ("../pages/pages/Pricing"));
 const Profile = async(() =>
     import ("../pages/pages/Profile"));
+
+const CreateVendor = async(() =>
+    import ("../pages/vendors/add_vendors/AddVendor.page"));
 const Settings = async(() =>
     import ("../pages/pages/Settings"));
 const Tasks = async(() =>
@@ -175,13 +178,13 @@ const CreateContract = async(() =>
     import ("../pages/create_contract/cc_main.page"));
 
 const dashboardsRoutes = {
-    id: "Dashboard",
-    path: "/dashboard",
+    id: "Contracts",
+    path: "/contracts",
     header: "Pages",
     icon: < Sliders / > ,
     containsHome: true,
     children: [{
-            path: "/dashboard/createcontract",
+            path: "/contracts/createcontract",
             name: "Create Contract",
             component: CreateContract,
         }, {
@@ -204,10 +207,15 @@ const dashboardsRoutes = {
 };
 
 const pagesRoutes = {
-    id: "Pages",
-    path: "/pages",
+    id: "Vendors",
+    path: "/vendors",
     icon: < Layout / > ,
     children: [{
+            path: "/vendors/createvendors",
+            name: "Add Vendor",
+            component: CreateVendor,
+        },
+        {
             path: "/pages/profile",
             name: "Profile",
             component: Profile,
