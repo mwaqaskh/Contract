@@ -3,6 +3,44 @@ from django.utils import timezone
 import datetime
 from user.models import User
 
+
+
+class BusinessUnit(models.Model):
+    depname=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class Tags(models.Model):
+    tagname=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class Department(models.Model):
+    depname=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+class Regions(models.Model):
+    regname=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+class Divisions(models.Model):
+    divname=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class Sites(models.Model):
+    sitename=models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+
+
 # Create your models here.
 class ContractBasic(models.Model):
 
@@ -77,15 +115,16 @@ class ContractBasic(models.Model):
     category1 = models.TextField( null=True, blank=True) #from taxonomy
     category2 = models.TextField( null=True, blank=True) #from taxonomy
     category3 = models.TextField( null=True, blank=True) #from taxonomy
-    department = models.TextField( null=True, blank=True)
-    business_unit = models.TextField(null=True, blank=True)
-    divisions = models.TextField( null=True, blank=True)
-    regions = models.TextField( null=True, blank=True)
-    site = models.TextField( null=True, blank=True)
+    department = models.ManyToManyField(Department)
+    business_unit = models.ManyToManyField(BusinessUnit)
+    divisions = models.ManyToManyField(Divisions)
+    regions = models.ManyToManyField(Regions)
+    site = models.ManyToManyField(Sites)
+    tags=models.ManyToManyField(Tags)
     location_of_hardcopy_contract = models.CharField(max_length=150, null=True, blank=True)
     notes=models.TextField(null=True, blank=True)
     contract_form = models.CharField(max_length=150, null=True, blank=True)
-
+    
     objects = models.Manager()
 
     def __str__(self):
@@ -94,6 +133,7 @@ class ContractBasic(models.Model):
     # @property
     # def insurance(self):
     #     return self.contractrev.all()
+
 
 
 class Insurance(models.Model):
@@ -119,4 +159,3 @@ class Insurance(models.Model):
 
     def __str__(self):
         return str(self.supplier_name)
-

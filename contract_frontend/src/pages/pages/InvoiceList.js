@@ -204,8 +204,9 @@ function stableSort(array, comparator) {
 }
 
 const headCells = [
-  { id: "status", alignment: "left", label: "Status" },
   { id: "customer", alignment: "left", label: "Customer" },
+  { id: "status", alignment: "left", label: "Status" },
+
   { id: "id", alignment: "right", label: "ID" },
   { id: "amount", alignment: "right", label: "Amount" },
   { id: "date", alignment: "left", label: "Issue Date" },
@@ -268,10 +269,10 @@ let EnhancedTableToolbar = (props) => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="h6" id="tableTitle">
-            Invoices
+            <Typography variant="h6" id="tableTitle">
+              Invoices
           </Typography>
-        )}
+          )}
       </ToolbarTitle>
       <Spacer />
       <div>
@@ -282,12 +283,12 @@ let EnhancedTableToolbar = (props) => {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+            <Tooltip title="Filter list">
+              <IconButton aria-label="Filter list">
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+          )}
       </div>
     </Toolbar>
   );
