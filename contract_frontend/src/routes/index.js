@@ -111,7 +111,7 @@ const Profile = async(() =>
     import ("../pages/pages/Profile"));
 
 const CreateVendor = async(() =>
-    import ("../pages/vendors/add_vendors/AddVendor.page"));
+    import ("../pages/vendors/add_vendor/addVendor.page"));
 const Settings = async(() =>
     import ("../pages/pages/Settings"));
 const Tasks = async(() =>
@@ -243,6 +243,26 @@ const pagesRoutes = {
     ],
     component: null,
 };
+
+const configRoutes = {
+    id: "Configurations",
+    path: "/config",
+    icon: < CreditCard / > ,
+    children: [{
+            path: "/config/contracts",
+            name: "Contract Configs",
+            component: CreateVendor,
+        },
+        {
+            path: "/pages/profile",
+            name: "Profile",
+            component: Profile,
+        },
+
+    ],
+    component: null,
+};
+
 
 const projectsRoutes = {
     id: "Projects",
@@ -605,6 +625,7 @@ const protectedPageRoutes = {
 export const dashboardLayoutRoutes = [
     dashboardsRoutes,
     pagesRoutes,
+    configRoutes,
     projectsRoutes,
     orderRoutes,
     invoiceRoutes,
@@ -633,6 +654,7 @@ export const protectedRoutes = [protectedPageRoutes];
 export const sidebarRoutes = [
     dashboardsRoutes,
     pagesRoutes,
+    configRoutes,
     projectsRoutes,
     orderRoutes,
     invoiceRoutes,

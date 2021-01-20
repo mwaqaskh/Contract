@@ -6,8 +6,8 @@ from user.models import User
 class VendorBasic(models.Model):
     
     vendor_number=models.CharField(max_length=255)
-    abn=models.CharField(max_length=255)
-    supplier_name=models.CharField(max_length=255)
+    abn=models.CharField(max_length=255 , unique=True)
+    supp_name=models.CharField(max_length=255)
     contact_name=models.CharField(max_length=255)
     contact_email=models.EmailField(max_length=254)
     telephone=models.CharField(max_length=255,null=True, blank=True)
@@ -16,6 +16,8 @@ class VendorBasic(models.Model):
     address_suburb=models.CharField(max_length=255)
     address_state=models.CharField(max_length=255)
     address_postcode=models.CharField(max_length=255)
+    supp_city=models.CharField(max_length=255,null=True, blank=True)
+    supplier_country=models.CharField(max_length=255,null=True, blank=True)
     company_email=models.EmailField(max_length=254)
     website=models.CharField(max_length=255,null=True, blank=True)
     comments=models.TextField(null=True, blank=True)
@@ -32,4 +34,4 @@ class VendorBasic(models.Model):
     objects = models.Manager()
 
     def __str__(self):
-        return str(self.supplier_name)
+        return str(self.supp_name)
