@@ -112,6 +112,7 @@ const Profile = async(() =>
 
 const CreateVendor = async(() =>
     import ("../pages/vendors/add_vendor/addVendor.page"));
+
 const Settings = async(() =>
     import ("../pages/pages/Settings"));
 const Tasks = async(() =>

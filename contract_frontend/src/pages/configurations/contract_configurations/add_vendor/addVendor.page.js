@@ -7,6 +7,9 @@ function addVendorMainPage() {
     return (
         <React.Fragment>
             <MaterialLayout>
+                <Typography>
+                    Contract Configuration
+                </Typography>
                 <AddVendors />
             </MaterialLayout>
         </React.Fragment>
