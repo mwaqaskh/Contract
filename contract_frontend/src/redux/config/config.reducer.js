@@ -36,7 +36,7 @@ const configReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isRegionFetching: false,
-                regionList: regionList.concat(action.payload)
+                regionList: [...state.regionList, action.payload]
             };
         case CONFIG_types.ADD_REGION__FAILURE:
             return {

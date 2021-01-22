@@ -36,9 +36,10 @@ export function* addRegions(action) {
     try {
         console.log('running axios')
         const regionList = yield axios.post(`/basic/region/`, action.payload);
-        console.log(regionList)
+        // console.log(regionList)
 
         yield put(addRegionSuccess(regionList.data));
+        yield put(fetchRegionStart());
     } catch (error) {
         yield put(addRegionFailure(error.message));
     }
@@ -52,10 +53,11 @@ export function* onAddRegionStart() {
 export function* delRegions(action) {
     try {
         console.log('running axios')
-        const regionList = yield axios.delete(`/basic/region/`, action.payload);
+        const regionList = yield axios.delete(`/basic/region/` + action.payload.id);
         console.log(regionList)
 
         yield put(delRegionSuccess(regionList.data));
+        yield put(fetchRegionStart());
     } catch (error) {
         yield put(delRegionFailure(error.message));
     }

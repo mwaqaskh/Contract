@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 
-const selectRegion = state => state.regionList
+const selectRegion = state => state.configReducer
 
 
-export const selectUserList = createSelector(
+export const selectRegionList = createSelector(
     [selectRegion],
-    selectRegion => selectRegion.selectRegion
+    regionList => regionList.regionList
 )

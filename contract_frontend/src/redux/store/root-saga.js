@@ -7,8 +7,6 @@ import { onAddRegionStart } from '../config/config.sagas';
 import { onDelRegionStart } from '../config/config.sagas';
 
 export default function* rootSaga() {
-    yield all([call(onFetchUserStart)]);
-    yield all([call(onFetchRegionStart)]);
-    yield all([call(onAddRegionStart)]);
-    yield all([call(onDelRegionStart)]);
+    yield all([call(onFetchUserStart), call(onFetchRegionStart), call(onAddRegionStart), call(onDelRegionStart)]);
+
 }

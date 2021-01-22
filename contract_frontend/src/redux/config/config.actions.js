@@ -33,8 +33,9 @@ export const addRegionFailure = errorMessage => ({
 
 
 //state Deletion actions
-export const delRegionStart = () => ({
-    type: CONFIG_types.DEL_REGION_START
+export const delRegionStart = (row) => ({
+    type: CONFIG_types.DEL_REGION_START,
+    payload: row
 });
 
 export const delRegionSuccess = stateList => ({

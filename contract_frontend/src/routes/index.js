@@ -113,6 +113,11 @@ const Profile = async(() =>
 const CreateVendor = async(() =>
     import ("../pages/vendors/add_vendor/addVendor.page"));
 
+
+const MainConfig = async(() =>
+    import ("../pages/configurations/contract_configurations/Main.config.page"));
+
+
 const Settings = async(() =>
     import ("../pages/pages/Settings"));
 const Tasks = async(() =>
@@ -252,7 +257,7 @@ const configRoutes = {
     children: [{
             path: "/config/contracts",
             name: "Contract Configs",
-            component: CreateVendor,
+            component: MainConfig,
         },
         {
             path: "/pages/profile",
