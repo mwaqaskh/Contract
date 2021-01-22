@@ -63,25 +63,36 @@ export default function BasicTable() {
     const dispatch = useDispatch()
     const regData = useSelector(state => selectRegionList(state))
     const [modalStyle] = React.useState(getModalStyle);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState({});
+
 
     const classes = useStyles();
 
 
 
-    const handleOpen = () => {
-        setOpen(true);
+    const handleOpen = (id) => {
+        setOpen(
+            {
+                [`setOpen-${id}`]: true
+            }
+        );
     };
 
     const handleClose = () => {
         setOpen(false);
     };
-
+    console.log(open)
     const body = (row) => (
         <div style={modalStyle} className={classes.paper}>
             <RegiondelForm setOpen={setOpen} row={row} />
         </div>
     );
+
+    const handleBackdropClick = () => {
+        setOpen(false);
+    };
+
+
 
 
     useEffect(() => {
@@ -108,17 +119,17 @@ export default function BasicTable() {
                             </TableCell>
                             <TableCell>
 
-                                <DeleteForeverIcon onClick={handleOpen} fontSize="default" />
+                                <DeleteForeverIcon onClick={() => handleOpen(row.id)} fontSize="default" />
 
 
                                 <Modal
                                     aria-labelledby="transition-modal-title"
                                     aria-describedby="transition-modal-description"
                                     className={classes.modal}
-                                    open={open}
+                                    open={open[`setOpen-${row.id}`]}
                                     onClose={handleClose}
                                     closeAfterTransition
-                                    BackdropComponent={Backdrop}
+                                    onBackdropClick={handleBackdropClick}
                                     BackdropProps={{
                                         timeout: 500,
                                     }}
