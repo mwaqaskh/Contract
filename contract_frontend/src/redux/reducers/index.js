@@ -9,11 +9,14 @@ import userReducer from '../user/user.reducer'
 import ccCheckBox from '../create_contract/checkbox.reducer'
 import configReducer from '../config/config.reducer'
 
+import configBUReducer from '../config_bu/config_bu.reducer'
+import configTAGSReducer from '../config_tags/config_tags.reducer'
+
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['cc', 'ccCheckBox', 'configReducer']
+    whitelist: ['cc', 'ccCheckBox', 'configReducer', 'configBUReducer', 'configTAGSReducer']
 }
 
 
@@ -22,7 +25,9 @@ const rootReducer = combineReducers({
     cc: ccReducer,
     userList: userReducer,
     ccCheckBox: ccCheckBox,
-    configReducer: configReducer
+    configReducer: configReducer,
+    configBUReducer: configBUReducer,
+    configTAGSReducer: configTAGSReducer,
 })
 
 export default persistReducer(persistConfig, rootReducer)

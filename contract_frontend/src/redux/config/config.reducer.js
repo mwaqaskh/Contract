@@ -9,6 +9,7 @@ const INITIAL_STATE = {
 
 const configReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
+        //Region Fetch
         case CONFIG_types.FETCH_REGION_START:
             return {
                 ...state,
