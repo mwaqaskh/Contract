@@ -29,17 +29,18 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        border: '2px solid #fff',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
     table1: {
-        minWidth: 400,
+        minWidth: '35em',
         maxHeight: 300,
         overflowY: 'auto',
-
-
     },
+    tablecell: {
+        fontSize: "1.1em",
+    }
 }));
 
 
@@ -107,14 +108,14 @@ export default function BasicTable() {
             <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Available Regions</TableCell>
+                        <TableCell className={classes.tablecell}>Available Regions</TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {regData.map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell component="th" scope="row">
+                            <TableCell component="th" scope="row" className={classes.tablecell}>
                                 {row.regname}
                             </TableCell>
                             <TableCell>

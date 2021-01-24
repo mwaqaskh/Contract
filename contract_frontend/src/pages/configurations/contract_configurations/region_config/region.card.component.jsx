@@ -14,9 +14,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         width: 400,
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #fff',
+        border: '2px solid grey',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+
     },
     table: {
         minWidth: 650,
@@ -37,6 +38,7 @@ function getModalStyle() {
         top: `${top}%`,
         left: `${left}%`,
         transform: `translate(-${top}%, -${left}%)`,
+        border: '0.5px solid #fff',
     };
 }
 
@@ -62,9 +64,9 @@ export default function ConfigMainPage() {
 
     return (
         <React.Fragment>
-            <Grid container sm={4} xs={4}>
+            <Grid container sm={6} xs={12}>
                 <Grid container item>
-                    <Grid container justify="space-between">
+                    <Grid container justify="space-between" style={{ minWidth: '35em' }}>
                         <Grid item>
                             <Grid container alignItems="center">
                                 <Grid item>

@@ -1,0 +1,12 @@
+export const FETCH_DIV_START = 'FETCH_DIV_START';
+export const FETCH_DIV_SUCCESS = 'FETCH_DIV_SUCCESS';
+export const FETCH_DIV_FAILURE = 'FETCH_DIV_FAILURE';
+
+
+export const ADD_DIV_START = 'ADD_DIV_START';
+export const ADD_DIV_SUCCESS = 'ADD_DIV_SUCCESS';
+export const ADD_DIV_FAILURE = 'ADD_DIV_FAILURE';
+
+export const DEL_DIV_START = 'DEL_DIV_START';
+export const DEL_DIV_SUCCESS = 'DEL_DIV_SUCCESS';
+export const DEL_DIV_FAILURE = 'DEL_DIV_FAILURE';

@@ -8,6 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { delRegionStart, fetchRegionStart } from '../../../../redux/config/config.actions'
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import Grid from '@material-ui/core/Grid';
 
 import axios from '../../../../utils1.js/axios'
 
@@ -19,7 +21,13 @@ const useStyles = makeStyles((theme) => ({
 
     },
     title: {
-        marginTop: '1em'
+        marginTop: '1em',
+        fontSize: '1.5em'
+    },
+    subtitle: {
+        marginTop: '2.5em',
+        color: 'grey',
+        fontSize: '1em'
     },
 
 }));
@@ -54,15 +62,33 @@ const RegiondelForm = ({ setOpen, row }) => {
     });
 
     return (
-        <div>
-            <Typography className={classes.title} variant='h5'>Deleting {row.regname}</Typography>
-            <form onSubmit={formik.handleSubmit}>
+        <Grid container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '1em' }}>
+            <Grid container item justify='center' alignItems='center'>
+                <Grid container item alignContent='center' justify='center'>
+                    <Typography className={classes.title} variant='h6'>
 
-                <Button className={classes.btn} color="primary" variant="contained" fullWidth type="submit">
-                    Confirm Delete
-        </Button>
-            </form>
-        </div>
+                        <ErrorOutlineIcon fontSize="large" color='error'></ErrorOutlineIcon>
+                        Are You Sure?</Typography>
+                </Grid>
+            </Grid>
+            <Grid item>
+                <Typography className={classes.subtitle} variant='h6'>Click below to delete {row.regname} Region permanently</Typography>
+                <form onSubmit={formik.handleSubmit}>
+
+                    <Button className={classes.btn} color="primary" variant="contained" fullWidth type="submit">
+                        Confirm Delete
+                    </Button>
+                </form>
+            </Grid>
+
+
+        </Grid>
+
     );
 };
 
