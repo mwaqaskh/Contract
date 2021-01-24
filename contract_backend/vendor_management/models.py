@@ -2,6 +2,22 @@ from django.db import models
 from django.utils import timezone
 from user.models import User
 
+#vendor Tags
+class VendorTag(models.Model):
+    vendor_tagname=models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.vendor_tagname)
+
+#Vendor Trades
+class VendorTrade(models.Model):
+    vendor_trade=models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.vendor_trade)
+
+
+
 # Create your models here.
 class VendorBasic(models.Model):
     
@@ -30,6 +46,8 @@ class VendorBasic(models.Model):
     created_date=models.DateField(default=timezone.now)
     modified_by=models.ForeignKey(User, on_delete=models.CASCADE, related_name="modifier_rev", null=True, blank=True)
     modified_date=models.DateField(null=True, blank=True,)
+    trade = models.ManyToManyField(VendorTrade)
+    tags=models.ManyToManyField(VendorTag)
     
     objects = models.Manager()
 

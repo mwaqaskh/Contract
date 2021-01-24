@@ -13,6 +13,7 @@ django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 djangorestframework-jwt = "*"
 pillow = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.8"

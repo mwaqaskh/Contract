@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'import_export',
     'corsheaders',
     'vendor_management',
+    'buyer',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
