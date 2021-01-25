@@ -11,17 +11,33 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter,SearchFilter
 from django_filters import FilterSet
 from django_filters import rest_framework as filters
+
+#pagination import
+from rest_framework.pagination import LimitOffsetPagination,PageNumberPagination
  
+ 
+ 
+class VendorPagination(PageNumberPagination):
+    page_size=2
 
 class VendorFilter(FilterSet):
     active=filters.CharFilter('active')
-    tags=filters.CharFilter('vendortrade__vendor_tagname')
-    trade=filters.CharFilter('vendortrade__vendor_trade')
+    tags=filters.CharFilter(method='filter_by_tags')
+    trade=filters.CharFilter(method='filter_by_trade')
 
     class Meta:
         model:VendorBasic
         fields=('active','tags','trade')
+    
+    def filter_by_tags(self,queryset,name,value):
+        tags_names=value.strip().split(',')
+        tags=VendorTag.objects.filter(vendortagname__in=tags_names)
+        return queryset.filter(tags__in=tags).distinct()
 
+    def filter_by_trade(self,queryset,name,value):
+        trade_names=value.strip().split(',')
+        trades=VendorTrade.objects.filter(vendortrade__in=trade_names)
+        return queryset.filter(trade__in=trades).distinct()
 
 
 class VendorListView(generics.ListAPIView):
@@ -29,7 +45,9 @@ class VendorListView(generics.ListAPIView):
     queryset=VendorBasic.objects.all()
     filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter)
     filter_class = VendorFilter
-    search_fields=('active','vendortrade__vendor_tagname', )
+    search_fields=('active','tags__vendortagname','trade__vendortrade' )
+    pagination_class=VendorPagination
+    ordering_fields=('active',)
 
 
 

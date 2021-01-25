@@ -7,12 +7,12 @@ from .models import VendorBasic,VendorTag,VendorTrade
 
 @admin.register(VendorTag)
 class VendorTagsAdmin(ImportExportModelAdmin):
-    list_display = ('vendor_tagname',)
+    list_display = ('vendortagname',)
 
 
 @admin.register(VendorTrade)
 class VendorTradeAdmin(ImportExportModelAdmin):
-    list_display = ('vendor_trade',)
+    list_display = ('vendortrade',)
 
 
 admin.site.register(VendorBasic)

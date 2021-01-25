@@ -4,17 +4,17 @@ from user.models import User
 
 #vendor Tags
 class VendorTag(models.Model):
-    vendor_tagname=models.CharField(max_length=255)
+    vendortagname=models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.vendor_tagname)
+        return str(self.vendortagname)
 
 #Vendor Trades
 class VendorTrade(models.Model):
-    vendor_trade=models.CharField(max_length=255)
+    vendortrade=models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.vendor_trade)
+        return str(self.vendortrade)
 
 
 
@@ -53,3 +53,6 @@ class VendorBasic(models.Model):
 
     def __str__(self):
         return str(self.supp_name)
+    
+    class Meta:
+       ordering = ['-id']
